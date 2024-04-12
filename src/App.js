@@ -3,6 +3,9 @@ import './App.css';
 import {useState} from "react";
 import {RichTextEditorComponent} from '@syncfusion/ej2-react-richtexteditor';
 
+
+//test change
+
 function App() {
 
   // custom font style, size, color, and background color
