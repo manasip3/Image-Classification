@@ -3,9 +3,6 @@ import './App.css';
 import {useState} from "react";
 import {RichTextEditorComponent} from '@syncfusion/ej2-react-richtexteditor';
 
-
-//test change
-
 function App() {
 
   // custom font style, size, color, and background color
@@ -63,7 +60,6 @@ function App() {
   const handleClick = () => {
     // implement retrieval code here
   };
-//test change 
 
   return (
     <div className="App">
@@ -86,4 +82,3 @@ function App() {
 }
 
 export default App;
-//test change 2
