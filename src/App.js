@@ -10,7 +10,7 @@ function App() {
 
   const [count, setCount] = useState(0);
   const handleClick = () => {
-    setCount(count + 1);
+    
   };
 
   return (
@@ -22,9 +22,8 @@ function App() {
           <input type="text" name="name" value={long} onChange={inputLong}/>
         </label>
         <button type="button" onClick={handleClick}>
-          Click Me
+          Retrieve DEM
         </button>
-        {count}
     </div>
   );
 }
