@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import {useState} from "react";
 import {RichTextEditorComponent} from '@syncfusion/ej2-react-richtexteditor';
+import axios from 'axios';
 
 function App() {
 
@@ -47,6 +48,7 @@ function App() {
   // input variables
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
+  const [elevationData, setElevationData] = useState(null);
   const inputLat = (event) => {setLat(event.target.value);
     event.target.style.fontFamily = fontFamily.items[0].value;
     event.target.style.fontSize = fontSize.items[1].value;
@@ -58,8 +60,25 @@ function App() {
 
   // button
   const handleClick = () => {
-    // implement retrieval code here
+    const data = {
+      latitude: lat,
+      longitude: long,
+    };
+    
+    const url = `http://localhost:3000/get_elevation`;
+    console.log("Request URL:", url); // Debugging line
+    
+    axios.post(url, data)
+      .then(response => {
+        console.log("Request successful:", response);
+        setElevationData(response.data);
+      })
+      .catch(error => {
+        console.error("Error with elevation data:", error);
+        setElevationData(null);
+      });
   };
+  
 
   return (
     <div className="App">
@@ -77,8 +96,19 @@ function App() {
         <button type="button" onClick={handleClick}>
           Retrieve DEM
         </button>
+        <div style={labelLong}>
+          <div>
+            <pre>{'\n'}</pre>
+            Display Elevation Data
+            <pre>
+              {JSON.stringify(elevationData, null, 2)}
+            </pre>
+          </div>
+        </div>
+
     </div>
   );
 }
 
 export default App;
+
