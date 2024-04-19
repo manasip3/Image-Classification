@@ -6,11 +6,12 @@ import axios from 'axios';
 
 function App() {
 
-  // custom font style, size, color, and background color
+  // custom font stuff
   // referenced from https://ej2.syncfusion.com/react/documentation/rich-text-editor/styling#:~:text=Font%20name%20and%20size,-By%20default%2C%20the&text=To%20change%20it%2C%20select%20a,changes%20to%20the%20selected%20text.
   let toolbarSettings = {
     items: ['FontName', 'FontSize', 'FontColor', 'BackgroundColor']
   };
+  // fonts
   let fontFamily = {
     items:[{text: 'Courier New', value: 'Courier New, Courier, monospace'},
       {text: 'Times New Roman', value: 'Times New Roman, Times, serif'}, 
@@ -18,23 +19,35 @@ function App() {
   ],
     width: '100px'
   };
+  // font sizes
   let fontSize = {
     items:[{text: '8', value: '8pt'},
       {text: '12', value: '12pt'},
       {text: '20', value: '20pt'}, 
       {text: '30', value: '30pt'}, 
-      {text: '50', value: '50pt'}
+      {text: '50', value: '50pt'},
+      {text: '80', value: '80pt'}
     ],
     width: '100px'
   };
+  // other font stuff
   let fontColor = {
     modeSwitcher: true
   };
+  // other font stuff pt.2
   let backgroundColor = {
     modeSwitcher: true
   };
 
-  // label
+  // labels
+  const labelTitle = {
+    fontFamily: '"Jersey 10", sans-serif',
+    fontSize: '80px',
+    fontWeight: 'bold',
+    color: '#EDDFB3',
+    textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
+    letterSpacing: '3px'
+  };
   const labelLat = {
     fontFamily: '"Jersey 10", sans-serif',
     fontSize: '50px',
@@ -97,39 +110,46 @@ function App() {
 
   return (
     <div className="App-header">
-        <div style={{...labelLat, marginTop: '50px', marginBottom: '0px'}}>
-          Input Latitude: 
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <div style={{...labelLat, marginTop: '-10px', marginBottom: '10px'}}>
-              <input type="text" name="name" value={lat} onChange={inputLat}
-              style={{
-                fontFamily: '"Jersey 10", sans-serif',
-                fontSize: '20px',
-                padding: '5px',
-                borderRadius: '4px',
-                border: '1px solid #ccc'
-              }}
-              />
-            </div>
+      
+      <div style={{...labelTitle, marginTop: '50px', marginBottom: '0px'}}>
+        Image Classification
+      </div>
+
+      <div style={{...labelLat, marginTop: '50px', marginBottom: '0px'}}>
+        Input Latitude: 
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{...labelLat, marginTop: '-10px', marginBottom: '10px'}}>
+            <input type="text" name="name" value={lat} onChange={inputLat}
+            style={{
+              fontFamily: '"Jersey 10", sans-serif',
+              fontSize: '20px',
+              padding: '5px',
+              borderRadius: '4px',
+              border: '1px solid #ccc'
+            }}
+            />
           </div>
         </div>
-        <div style={{...labelLong, marginTop: '20px', marginBottom: '30px'}}>
-          Input Longitude: 
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <div style={{...labelLong, marginTop: '-10px', marginBottom: '10px'}}>
-              <input type="text" name="name" value={long} onChange={inputLong}
-              style={{
-                fontFamily: '"Jersey 10", sans-serif',
-                fontSize: '20px',
-                padding: '5px',
-                borderRadius: '4px',
-                border: '1px solid #ccc'
-              }}
-              />
-            </div>
+      </div>
+
+      <div style={{...labelLong, marginTop: '20px', marginBottom: '30px'}}>
+        Input Longitude: 
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{...labelLong, marginTop: '-10px', marginBottom: '10px'}}>
+            <input type="text" name="name" value={long} onChange={inputLong}
+            style={{
+              fontFamily: '"Jersey 10", sans-serif',
+              fontSize: '20px',
+              padding: '5px',
+              borderRadius: '4px',
+              border: '1px solid #ccc'
+            }}
+            />
           </div>
         </div>
-        <button type="button" 
+      </div>
+
+      <button type="button" 
         onClick={handleClick}
         className="rounded-button"
         style={{
@@ -137,7 +157,7 @@ function App() {
           color: '#FFFFFF', // text color
           fontSize: '30px', // font size
           fontFamily: '"Jersey 10", sans-serif', // font family
-          textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000',  // text outline
+          textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000', // text outline
           letterSpacing: '3px', // text spacing
           
           border: '2px solid #FFFFFF', // border and border color
@@ -145,8 +165,8 @@ function App() {
           borderRadius: '4px', // border radius
           cursor: 'pointer' // cursor style
         }}
-        >
-          Retrieve DEM
+      >
+        Retrieve DEM
         </button>
         <div style={{...labelDisplay, marginTop: '80px', marginBottom: '50px'}}>
           <div>
