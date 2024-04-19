@@ -99,11 +99,35 @@ function App() {
     <div className="App-header">
         <div style={{...labelLat, marginTop: '50px', marginBottom: '0px'}}>
           Input Latitude: 
-          <input type="text" name="name" value={lat} onChange={inputLat}/>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{...labelLat, marginTop: '-10px', marginBottom: '10px'}}>
+              <input type="text" name="name" value={lat} onChange={inputLat}
+              style={{
+                fontFamily: '"Jersey 10", sans-serif',
+                fontSize: '20px',
+                padding: '5px',
+                borderRadius: '4px',
+                border: '1px solid #ccc'
+              }}
+              />
+            </div>
+          </div>
         </div>
         <div style={{...labelLong, marginTop: '20px', marginBottom: '30px'}}>
           Input Longitude: 
-          <input type="text" name="name" value={long} onChange={inputLong}/>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{...labelLong, marginTop: '-10px', marginBottom: '10px'}}>
+              <input type="text" name="name" value={long} onChange={inputLong}
+              style={{
+                fontFamily: '"Jersey 10", sans-serif',
+                fontSize: '20px',
+                padding: '5px',
+                borderRadius: '4px',
+                border: '1px solid #ccc'
+              }}
+              />
+            </div>
+          </div>
         </div>
         <button type="button" 
         onClick={handleClick}
@@ -127,9 +151,11 @@ function App() {
         <div style={{...labelDisplay, marginTop: '80px', marginBottom: '50px'}}>
           <div>
             Display Elevation Data
-            <pre>
-              {JSON.stringify(elevationData, null, 2)}
-            </pre>
+            {elevationData !== null && (
+              <pre>
+                {JSON.stringify(elevationData, null, 2)}
+              </pre>
+            )}
           </div>
         </div>
 
