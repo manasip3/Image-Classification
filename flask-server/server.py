@@ -15,6 +15,7 @@ def get_elevation():
     try:
         # Get latitude and longitude from user input
         lat = request.json['latitude']
+        print('start of python function: lat variable')
         lon = request.json['longitude']
         
         # Radius of the Earth
@@ -49,9 +50,10 @@ def get_elevation():
         xcoord, ycoord = 2000, 2000
         elevation_data = imarray[xcoord-200:xcoord+200, ycoord-200:ycoord+200].tolist()
         
-        return jsonify({'elevation': elevation_data}), 200
+        return elevation_data
     
     except Exception as e:
+        print(f'Error in get_elevation: {e}')
         return jsonify({'error': 'Failed to retrieve elevation', 'details': str(e)}), 500
 
 if __name__ == '__main__':
