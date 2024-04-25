@@ -13,7 +13,7 @@ const RoundedButton = styled.button`
   padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
-`;
+`; 
 
 function App() {
   // custom font stuff
